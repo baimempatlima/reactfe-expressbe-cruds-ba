@@ -22,8 +22,8 @@ const Home = () => {
     setProduct(response.data.product);
   };
 
-  const searchProduct = (list, searchPrd) => {
-    let buf = ".*" + searchPrd.replace(/(.)/g, "$1.*").toLowerCase();
+  const searchProduct = (list, searchValue) => {
+    let buf = ".*" + searchValue.replace(/(.)/g, "$1.*").toLowerCase();
     var reg = new RegExp(buf);
     let newList = list.filter(function (e) {
       return reg.test(e.name.toLowerCase());
