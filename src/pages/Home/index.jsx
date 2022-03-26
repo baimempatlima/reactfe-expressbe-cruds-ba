@@ -2,13 +2,14 @@ import { Link } from "react-router-dom";
 import "./index.scss";
 import { useState, useEffect } from "react";
 import axios from "axios";
+const API_URL = process.env.REACT_APP_RESTAPI;
 
 const Home = () => {
   const [product, setProduct] = useState([]);
   const [keyword, setKeyword] = useState("");
   const deleteProduct = (id) => {
     axios
-      .delete("https://byu-apiexpressmongo.herokuapp.com/api/v4/product/" + id)
+      .delete(API_URL + "/product/" + id)
       .then((res) => getProduct())
       .catch((error) => console.log(error));
   };
@@ -18,7 +19,7 @@ const Home = () => {
   }, []);
 
   const getProduct = async () => {
-    const response = await axios.get("https://byu-apiexpressmongo.herokuapp.com/api/v4/product");
+    const response = await axios.get(API_URL + "/product");
     setProduct(response.data.product);
   };
 

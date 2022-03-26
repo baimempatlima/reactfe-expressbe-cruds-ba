@@ -2,6 +2,7 @@ import Input from "../../components/Input";
 import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import axios from "axios";
+const API_URL = process.env.REACT_APP_RESTAPI;
 
 const Edit = () => {
   const [name, setName] = useState("");
@@ -14,7 +15,7 @@ const Edit = () => {
   const editProduct = async (e) => {
     e.preventDefault();
     await axios
-      .put("https://byu-apiexpressmongo.herokuapp.com/api/v4/product/" + id, {
+      .put(API_URL + "/product/" + id, {
         name: name,
         price: price,
         stock: stok,

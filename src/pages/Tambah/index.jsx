@@ -3,6 +3,7 @@ import Input from "../../components/Input";
 import "./index.scss";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+const API_URL = process.env.REACT_APP_RESTAPI;
 
 const Tambah = () => {
   const [name, setName] = useState("");
@@ -13,7 +14,7 @@ const Tambah = () => {
 
   const saveProduct = async (e) => {
     e.preventDefault();
-    await axios.post("https://byu-apiexpressmongo.herokuapp.com/api/v4/product", {
+    await axios.post(API_URL + "/product", {
       name: name,
       price: price,
       stock: stok,

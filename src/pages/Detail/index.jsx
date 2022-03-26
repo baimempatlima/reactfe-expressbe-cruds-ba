@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import "./index.scss";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+const API_URL = process.env.REACT_APP_RESTAPI;
 
 const Detail = () => {
   const { id } = useParams();
@@ -10,7 +11,7 @@ const Detail = () => {
   useEffect(() => {
     const getProduct = async () => {
       await axios
-        .get("https://byu-apiexpressmongo.herokuapp.com/api/v4/product/" + id)
+        .get(API_URL + "/product/" + id)
         .then((res) => {
           setProduct(res.data.product);
         })
